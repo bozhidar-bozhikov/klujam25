@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Layout
@@ -47,8 +46,8 @@ public class Layout
 
 public class Pocket
 {
-    public Image image;
-    public TextMeshProUGUI text;
+    public SpriteRenderer sprite;
+    public TextMeshPro text;
 
     int number;
     COLOR color;
@@ -66,13 +65,15 @@ public class Pocket
     }
 
 
-    public void SetUI(Image _image, TextMeshProUGUI _text)
+    public void SetUI(SpriteRenderer sprite, TextMeshPro text)
     {
-        image = _image;
-        text = _text;
+        this.sprite = sprite;
+        this.text = text;
 
-        image.color = GetColor();
-        text.text = number.ToString();
+        this.sprite.color = GetColor();
+        this.text.text = number.ToString();
+
+        if (color == COLOR.GRAY) this.text.text = "";
     }
 
     public bool isEven()
